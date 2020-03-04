@@ -1,3 +1,3 @@
 export { MultiSelectComponent } from './multiselect.component';
-export { NgMultiSelectDropDownModule } from './ng-multiselect-dropdown.module';
+export { NgMultiSelect9DropDownModule } from './ng-multiselect-dropdown.module';
 export { IDropdownSettings } from './multiselect.model';
