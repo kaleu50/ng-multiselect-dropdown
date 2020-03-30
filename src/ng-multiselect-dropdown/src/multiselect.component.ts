@@ -25,7 +25,7 @@ const noop = () => { };
   providers: [DROPDOWN_CONTROL_VALUE_ACCESSOR],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MultiSelectComponent implements ControlValueAccessor{
+export class MultiSelectComponent implements ControlValueAccessor {
   public _settings: IDropdownSettings;
   public _data: Array<ListItem> = [];
   public selectedItems: Array<ListItem> = [];
@@ -77,24 +77,24 @@ export class MultiSelectComponent implements ControlValueAccessor{
 
   @Input()
   public set data(value: Array<any>) {
-    setTimeout(() => {
-      if (!value) {
-        this._data = [];
-      } else {
-        const firstItem = value[0];
-        this._sourceDataType = typeof firstItem;
-        this._sourceDataFields = this.getFields(firstItem);
-        this._data = value.map((item: any) =>
-          typeof item === 'string' || typeof item === 'number'
-            ? new ListItem(item)
-            : new ListItem({
-              id: item[this._settings.idField],
-              text: item[this._settings.textField],
-              isDisabled: item[this._settings.disabledField]
-            })
-        );
-      }
-    }, 1);
+
+    if (!value) {
+      this._data = [];
+    } else {
+      const firstItem = value[0];
+      this._sourceDataType = typeof firstItem;
+      this._sourceDataFields = this.getFields(firstItem);
+      this._data = value.map((item: any) =>
+        typeof item === 'string' || typeof item === 'number'
+          ? new ListItem(item)
+          : new ListItem({
+            id: item[this._settings.idField],
+            text: item[this._settings.textField],
+            isDisabled: item[this._settings.disabledField]
+          })
+      );
+    }
+
   }
 
   @Output('onFilterChange')
