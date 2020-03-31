@@ -34,7 +34,10 @@
       </span>
     </span>
   </div>
-  <div class="dropdown-list" [hidden]="!_settings.defaultOpen">
+  <div
+    class="dropdown-list"
+    [hidden]="!_settings.defaultOpen"
+  >
     <ul class="item1">
       <li
         (keydown.enter)="toggleSelectAll()"
@@ -55,7 +58,6 @@
           [checked]="isAllItemsSelected()"
           [disabled]="disabled || isLimitSelectionReached()"
           tabindex="-1"
-
         />
         <div>
           {{
@@ -84,14 +86,16 @@
     </ul>
     <ul class="item2" [style.maxHeight]="_settings.maxHeight + 'px'">
       <li
-        *ngFor="let item of _data | multiSelectFilter: filter; let i = index"
+        *ngFor="let item of _data | multiSelectFilter: filter; let i = index;  let last = last"
         (keydown.enter)="onItemClick($event, item)"
         (click)="onItemClick($event, item)"
+        (keydown.tab)="last ? closeDropdown() : ''"
+
         class="multiselect-item-checkbox"
         tabindex="0"
       >
         <input
-        tabindex="-1"
+          tabindex="-1"
           type="checkbox"
           aria-label="multiselect-item"
           [checked]="isSelected(item)"

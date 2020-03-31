@@ -6,11 +6,11 @@
         <ng-multiselect-dropdown
           tabindex="-1"
           name="city"
+          [settings]="dropdownSettings"
           [placeholder]="'Select City'"
           [data]="cities"
           formControlName="city"
           [disabled]="disabled"
-          [settings]="dropdownSettings"
           (onDropDownClose)="onDropDownClose()"
           (onSelect)="onItemSelect($event)"
           (onSelectAll)="onSelectAll($event)"
